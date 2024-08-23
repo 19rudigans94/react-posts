@@ -4,17 +4,17 @@ import PostItem from "./PostItem";
 const PostList = ({ posts, title, remove }) => {
   if (posts.length === 0) {
     return (
-      <div className={'posts-container'}>
-        <h2 className={'posts-title'}>{title}</h2>
-        <h1>Посты не найдены</h1>
+      <div className="flex flex-col items-center p-4">
+        <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <h1 className="text-4xl font-bold">Посты не найдены</h1>
       </div>
     );
   }
 
   return (
-    <div className={'posts-container'}>
-      <h2 className={'posts-title'}>{title}</h2>
-      <ul className={'posts-list'}>
+    <div className="flex flex-col items-center p-4">
+      <h2 className="text-2xl font-bold mb-4">{title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {posts.map((post, index) =>
           <PostItem
             remove={remove}
@@ -22,7 +22,7 @@ const PostList = ({ posts, title, remove }) => {
             post={post}
             key={post.id} />
         )}
-      </ul>
+      </div>
     </div>
   );
 };
