@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import MyButton from "./UI/button/MyButton";
+import MyImput from "./UI/input/MyInput";
 const PostForm = ({ create }) => {
   const [post, setPost] = useState({ title: "", body: "" });
 
@@ -16,26 +18,26 @@ const PostForm = ({ create }) => {
 
   return (
     <form className="flex flex-col gap-4">
-      <input
+      <MyImput
         type="text"
         placeholder="Название поста"
         value={post.title}
         onChange={(e) => setPost({ ...post, title: e.target.value })}
         className="border p-2 rounded-md"
       />
-      <input
+      <MyImput
         type="text"
         placeholder="Описание поста"
         value={post.body}
         onChange={(e) => setPost({ ...post, body: e.target.value })}
         className="border p-2 rounded-md"
       />
-      <button
+      <MyButton
         onClick={addPost}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
       >
         Добавить
-      </button>
+      </MyButton>
     </form>
   );
 };
