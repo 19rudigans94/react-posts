@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from "react";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
-import MySelect from "./components/UI/MySelect";
+import MySelect from "./components/UI/select/MySelect";
+import MyImput from "./components/UI/input/MyInput";
 import "./App.css";
 
 
@@ -21,6 +22,7 @@ function App() {
   ];
 
   const [selectedSort, setSelectedSort] = useState('');
+  const [serch, setSerch] = useState('');
 
   const sortedPosts = useMemo(() => {
     if (selectedSort) {
@@ -30,6 +32,12 @@ function App() {
     }
     return posts;
   }, [selectedSort, posts]);
+
+  const sortedAndSearchedPosts = useMemo(() => {
+    return sortedPosts.filter((post) =>
+      post.title.toLowerCase().includes(serch.toLowerCase())
+    );
+  }, [serch, sortedPosts]);
 
   function createPost(newPost) {
     setPosts((prevPosts) => [...prevPosts, newPost]);
@@ -53,9 +61,15 @@ function App() {
         options={optionList}
         onChange={selectSort}
       />
+      <MyImput
+        type="text"
+        placeholder="Поиск поста"
+        value={serch}
+        onInput={(e) => setSerch(e.target.value)}
+      />
       <PostList
         remove={removePost}
-        posts={sortedPosts}
+        posts={sortedAndSearchedPosts}
         title="Мои посты" />
     </div>
   );
