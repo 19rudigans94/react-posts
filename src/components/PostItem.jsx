@@ -14,7 +14,8 @@ const PostItem = ({ post, number, remove }) => {
         </div>
       </div>
       <div>
-        <MyButton className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md "
+        <MyButton
+          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md "
           onClick={() => remove(post.id)}>Удалить</MyButton>
       </div>
     </li>
