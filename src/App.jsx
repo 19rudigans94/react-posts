@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
@@ -31,10 +31,7 @@ function App() {
     }, 3000);
   };
 
-  // useEffect(() => {
-  //   getPosts();
-  // }, []);
-
+  
   const optionList = [
     { value: "title", name: "По названию" },
     { value: "body", name: "По описанию" },
